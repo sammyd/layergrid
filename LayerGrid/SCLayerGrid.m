@@ -7,31 +7,14 @@
 //
 
 #import "SCLayerGrid.h"
+#import "SCAbstractGrid_Private.h"
 
-@interface SCLayerGrid () <UIScrollViewDelegate>
-
-@property (nonatomic, strong) UIScrollView *scrollView;
+@interface SCLayerGrid ()
 
 @end
 
 
 @implementation SCLayerGrid
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        [self addSubview:self.scrollView];
-        
-        // Some defaults
-        self.rowHeight = 30;
-        self.columnWidth = 120;
-    }
-    return self;
-}
-
 
 - (void)layoutSubviews
 {
@@ -68,14 +51,6 @@
                 [self.scrollView.layer addSublayer:cell];
             }
         }
-    }
-}
-
-- (void)setData:(NSArray *)data
-{
-    if(data != _data) {
-        _data = data;
-        [self setNeedsLayout];
     }
 }
 

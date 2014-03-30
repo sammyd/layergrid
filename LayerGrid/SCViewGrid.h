@@ -7,14 +7,8 @@
 //
 
 @import UIKit;
+#import "SCAbstractGrid.h"
 
-@interface SCViewGrid : UIView
-
-// 2D array of strings to display
-@property (nonatomic, strong) NSArray *data;
-
-@property (nonatomic, assign) CGFloat columnWidth;
-@property (nonatomic, assign) CGFloat rowHeight;
-
+@interface SCViewGrid : SCAbstractGrid
 
 @end

@@ -7,29 +7,13 @@
 //
 
 #import "SCViewGrid.h"
+#import "SCAbstractGrid_Private.h"
 
-@interface SCViewGrid () <UIScrollViewDelegate>
-
-@property (nonatomic, strong) UIScrollView *scrollView;
+@interface SCViewGrid ()
 
 @end
 
 @implementation SCViewGrid
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        [self addSubview:self.scrollView];
-        
-        // Some defaults
-        self.rowHeight = 30;
-        self.columnWidth = 120;
-    }
-    return self;
-}
 
 - (void)layoutSubviews
 {
@@ -59,21 +43,6 @@
             }
         }
     }
-}
-
-- (void)setData:(NSArray *)data
-{
-    if(data != _data) {
-        _data = data;
-        [self setNeedsLayout];
-    }
-}
-
-
-#pragma mark - UIScrollViewDelegate methods
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
 }
 
 @end
