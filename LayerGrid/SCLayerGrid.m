@@ -42,7 +42,7 @@
 {
     CATextLayer *cell = [CATextLayer layer];
     cell.foregroundColor = [UIColor blackColor].CGColor;
-    cell.fontSize = 13;
+    cell.fontSize = 15;
     cell.contentsScale = [UIScreen mainScreen].scale;
     return cell;
 }

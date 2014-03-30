@@ -23,7 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.grid = [[SCViewGrid alloc] initWithFrame:self.view.bounds];
-    self.grid.data = [SCDataFactory generateDataWithColumns:20 rows:100];
+    self.grid.data = [SCDataFactory generateDataWithColumns:200 rows:1000];
     [self.view addSubview:self.grid];
 }
 
