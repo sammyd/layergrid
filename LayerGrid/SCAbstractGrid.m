@@ -11,6 +11,7 @@
 #import "NSIndexSet+SetOperations.h"
 #import "SCGenericReuseCache.h"
 #import "NSIndexPath+Columns.h"
+#import "SCActivityLayer.h"
 
 @interface SCAbstractGrid () <UIScrollViewDelegate>
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) NSIndexSet *visibleColIndices;
 @property (nonatomic, strong) SCGenericReuseCache *reuseCache;
 @property (nonatomic, strong) NSMutableDictionary *visibleCells;
+@property (nonatomic, strong) CALayer *activityLayer;
 
 @end
 
@@ -70,13 +72,39 @@
         // Prepare the scroll view
         [self resetScrollView];
         
+        // Add the activity layer
+        [self prepareActivityLayer];
+        
         // Now add all the cells appropriately
         self.visibleRowIndices = [self currentlyVisibleRows];
         self.visibleColIndices = [self currentlyVisibleCols];
         [self.visibleRowIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-            [self addRowWithIndex:idx];
+            //[self addRowWithIndex:idx];
         }];
     }
+}
+
+#pragma mark - Activity cells
+- (void)prepareActivityLayer
+{
+    [self.activityLayer removeFromSuperlayer];
+    
+    // Create a column
+    SCActivityLayer *actLayer = [SCActivityLayer layer];
+    actLayer.bounds = CGRectMake(0, 0, self.columnWidth, self.rowHeight);
+    actLayer.position = CGPointMake(self.columnWidth / 2, self.rowHeight / 2);
+    CAReplicatorLayer *column = [CAReplicatorLayer layer];
+    [column addSublayer:actLayer];
+    column.instanceCount = [self.data count];
+    column.instanceTransform = CATransform3DMakeTranslation(0, self.rowHeight, 0);
+    
+    CAReplicatorLayer *grid = [CAReplicatorLayer layer];
+    [grid addSublayer:column];
+    grid.instanceCount = [self.data[0] count];
+    grid.instanceTransform  = CATransform3DMakeTranslation(self.columnWidth, 0, 0);
+    
+    self.activityLayer = grid;
+    [self.layer insertSublayer:self.activityLayer atIndex:0];
 }
 
 #pragma mark - Reuse methods

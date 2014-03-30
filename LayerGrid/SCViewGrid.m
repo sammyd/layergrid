@@ -35,7 +35,10 @@
 
 - (id)createNewCell
 {
-    return [UILabel new];
+    UILabel *lbl = [UILabel new];
+    lbl.backgroundColor = [UIColor whiteColor];
+    lbl.opaque = YES;
+    return lbl;
 }
 
 @end

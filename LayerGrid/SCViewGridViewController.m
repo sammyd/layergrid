@@ -9,6 +9,7 @@
 #import "SCViewGridViewController.h"
 #import "SCViewGrid.h"
 #import "SCDataFactory.h"
+#import "SCActivityLayer.h"
 
 @interface SCViewGridViewController ()
 
