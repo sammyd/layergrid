@@ -20,11 +20,17 @@
     }];
 }
 
-- (void)addCellWithFrame:(CGRect)frame content:(NSString *)content
+- (void)addCell:(id)cell withFrame:(CGRect)frame content:(NSString *)content
 {
-    UILabel *cell = [[UILabel alloc] initWithFrame:frame];
-    cell.text = content;
-    [self.scrollView addSubview:cell];
+    UILabel *lCell = (UILabel *)cell;
+    lCell.frame = frame;
+    lCell.text = content;
+    [self.scrollView addSubview:lCell];
+}
+
+- (id)createNewCell
+{
+    return [UILabel new];
 }
 
 @end

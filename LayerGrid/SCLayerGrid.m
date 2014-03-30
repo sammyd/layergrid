@@ -20,17 +20,23 @@
     }];
 }
 
-- (void)addCellWithFrame:(CGRect)frame content:(NSString *)content
+- (void)addCell:(id)cell withFrame:(CGRect)frame content:(NSString *)content
+{
+    CATextLayer *tlCell = (CATextLayer *)cell;
+    tlCell.bounds = CGRectMake(0, 0, self.columnWidth, self.rowHeight);
+    tlCell.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
+    tlCell.string = content;
+
+    [self.scrollView.layer addSublayer:tlCell];
+}
+
+- (id)createNewCell
 {
     CATextLayer *cell = [CATextLayer layer];
-    cell.bounds = CGRectMake(0, 0, self.columnWidth, self.rowHeight);
-    cell.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
-    cell.string = content;
     cell.foregroundColor = [UIColor blackColor].CGColor;
     cell.fontSize = 13;
     cell.contentsScale = [UIScreen mainScreen].scale;
-    
-    [self.scrollView.layer addSublayer:cell];
+    return cell;
 }
 
 @end

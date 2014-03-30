@@ -9,12 +9,13 @@
 #import "SCAbstractGrid.h"
 #import "SCAbstractGrid_Private.h"
 #import "NSIndexSet+SetOperations.h"
-
+#import "SCGenericReuseCache.h"
 
 @interface SCAbstractGrid () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSIndexSet *visibleRowIndices;
 @property (nonatomic, strong) NSIndexSet *visibleColIndices;
+@property (nonatomic, strong) SCGenericReuseCache *reuseCache;
 
 @end
 
@@ -32,6 +33,11 @@
         // Some defaults
         self.rowHeight = 30;
         self.columnWidth = 120;
+        
+        // Reuse cache
+        self.reuseCache = [[SCGenericReuseCache alloc] initWithCreationBlock:^id{
+            return [self createNewCell];
+        }];
     }
     return self;
 }
@@ -64,7 +70,8 @@
             for(NSUInteger i=0; i<numberCols; i++) {
                 CGRect layerFrame = [self frameForCellWithRow:j col:i];
                 NSString *content = [NSString stringWithFormat:@"(%d,%d) %@", i, j, self.data[j][i]];
-                [self addCellWithFrame:layerFrame content:content];
+                id cell = [self.reuseCache dequeueObject];
+                [self addCell:cell withFrame:layerFrame content:content];
             }
         }
     }
@@ -79,7 +86,7 @@
     @throw exception;
 }
 
-- (void)addCellWithFrame:(CGRect)frame content:(NSString *)content __attribute__((__noreturn__))
+- (void)addCell:(id)cell withFrame:(CGRect)frame content:(NSString *)content __attribute__((__noreturn__))
 {
     NSException *exception = [NSException exceptionWithName:@"NotImplemented"
                                                      reason:@"Override this in a subclass"
@@ -87,8 +94,13 @@
     @throw exception;
 }
 
-
-
+- (id)createNewCell __attribute__((__noreturn__))
+{
+    NSException *exception = [NSException exceptionWithName:@"NotImplemented"
+                                                     reason:@"Override this in a subclass"
+                                                   userInfo:nil];
+    @throw exception;
+}
 
 #pragma mark - Utility methods
 - (NSIndexSet *)currentlyVisibleRows
