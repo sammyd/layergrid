@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface SCSecondViewController : UIViewController
+@interface SCLayerGridViewController : UIViewController
 
 @end

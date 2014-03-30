@@ -15,7 +15,7 @@
 		22AD0AA518E82A510003E9DF /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AA418E82A510003E9DF /* SCAppDelegate.m */; };
 		22AD0AA818E82A510003E9DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22AD0AA618E82A510003E9DF /* Main.storyboard */; };
 		22AD0AAB18E82A510003E9DF /* SCViewGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AAA18E82A510003E9DF /* SCViewGridViewController.m */; };
-		22AD0AAE18E82A510003E9DF /* SCSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AAD18E82A510003E9DF /* SCSecondViewController.m */; };
+		22AD0AAE18E82A510003E9DF /* SCLayerGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AAD18E82A510003E9DF /* SCLayerGridViewController.m */; };
 		22AD0AB018E82A510003E9DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD0AAF18E82A510003E9DF /* Images.xcassets */; };
 		22AD0AB718E82A510003E9DF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD0AB618E82A510003E9DF /* XCTest.framework */; };
 		22AD0AB818E82A510003E9DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD0A9418E82A510003E9DF /* Foundation.framework */; };
@@ -24,6 +24,7 @@
 		22AD0AC318E82A510003E9DF /* LayerGridTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AC218E82A510003E9DF /* LayerGridTests.m */; };
 		22AD0ACF18E835D60003E9DF /* SCViewGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0ACE18E835D60003E9DF /* SCViewGrid.m */; };
 		22AD0AD318E837BE0003E9DF /* SCDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AD218E837BE0003E9DF /* SCDataFactory.m */; };
+		22AD0AD618E848F00003E9DF /* SCLayerGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AD518E848F00003E9DF /* SCLayerGrid.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +51,8 @@
 		22AD0AA718E82A510003E9DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22AD0AA918E82A510003E9DF /* SCViewGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCViewGridViewController.h; sourceTree = "<group>"; };
 		22AD0AAA18E82A510003E9DF /* SCViewGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCViewGridViewController.m; sourceTree = "<group>"; };
-		22AD0AAC18E82A510003E9DF /* SCSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCSecondViewController.h; sourceTree = "<group>"; };
-		22AD0AAD18E82A510003E9DF /* SCSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCSecondViewController.m; sourceTree = "<group>"; };
+		22AD0AAC18E82A510003E9DF /* SCLayerGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCLayerGridViewController.h; sourceTree = "<group>"; };
+		22AD0AAD18E82A510003E9DF /* SCLayerGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCLayerGridViewController.m; sourceTree = "<group>"; };
 		22AD0AAF18E82A510003E9DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22AD0AB518E82A510003E9DF /* LayerGridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LayerGridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AD0AB618E82A510003E9DF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -62,6 +63,8 @@
 		22AD0ACE18E835D60003E9DF /* SCViewGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewGrid.m; sourceTree = "<group>"; };
 		22AD0AD118E837BE0003E9DF /* SCDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDataFactory.h; sourceTree = "<group>"; };
 		22AD0AD218E837BE0003E9DF /* SCDataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDataFactory.m; sourceTree = "<group>"; };
+		22AD0AD418E848F00003E9DF /* SCLayerGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLayerGrid.h; sourceTree = "<group>"; };
+		22AD0AD518E848F00003E9DF /* SCLayerGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLayerGrid.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +134,8 @@
 				22AD0AA618E82A510003E9DF /* Main.storyboard */,
 				22AD0AA918E82A510003E9DF /* SCViewGridViewController.h */,
 				22AD0AAA18E82A510003E9DF /* SCViewGridViewController.m */,
-				22AD0AAC18E82A510003E9DF /* SCSecondViewController.h */,
-				22AD0AAD18E82A510003E9DF /* SCSecondViewController.m */,
+				22AD0AAC18E82A510003E9DF /* SCLayerGridViewController.h */,
+				22AD0AAD18E82A510003E9DF /* SCLayerGridViewController.m */,
 				22AD0AAF18E82A510003E9DF /* Images.xcassets */,
 				22AD0A9B18E82A510003E9DF /* Supporting Files */,
 			);
@@ -173,6 +176,8 @@
 			children = (
 				22AD0ACD18E835D60003E9DF /* SCViewGrid.h */,
 				22AD0ACE18E835D60003E9DF /* SCViewGrid.m */,
+				22AD0AD418E848F00003E9DF /* SCLayerGrid.h */,
+				22AD0AD518E848F00003E9DF /* SCLayerGrid.m */,
 			);
 			name = Grids;
 			sourceTree = "<group>";
@@ -302,12 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22AD0AAE18E82A510003E9DF /* SCSecondViewController.m in Sources */,
+				22AD0AAE18E82A510003E9DF /* SCLayerGridViewController.m in Sources */,
 				22AD0AAB18E82A510003E9DF /* SCViewGridViewController.m in Sources */,
 				22AD0ACF18E835D60003E9DF /* SCViewGrid.m in Sources */,
 				22AD0AA518E82A510003E9DF /* SCAppDelegate.m in Sources */,
 				22AD0AD318E837BE0003E9DF /* SCDataFactory.m in Sources */,
 				22AD0AA118E82A510003E9DF /* main.m in Sources */,
+				22AD0AD618E848F00003E9DF /* SCLayerGrid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
