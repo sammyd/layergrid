@@ -10,12 +10,14 @@
 #import "SCAbstractGrid_Private.h"
 #import "NSIndexSet+SetOperations.h"
 #import "SCGenericReuseCache.h"
+#import "NSIndexPath+Columns.h"
 
 @interface SCAbstractGrid () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSIndexSet *visibleRowIndices;
 @property (nonatomic, strong) NSIndexSet *visibleColIndices;
 @property (nonatomic, strong) SCGenericReuseCache *reuseCache;
+@property (nonatomic, strong) NSMutableDictionary *visibleCells;
 
 @end
 
@@ -38,6 +40,9 @@
         self.reuseCache = [[SCGenericReuseCache alloc] initWithCreationBlock:^id{
             return [self createNewCell];
         }];
+        
+        // Visible cells
+        self.visibleCells = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -66,15 +71,61 @@
         [self resetScrollView];
         
         // Now add all the cells appropriately
-        for(NSUInteger j=0; j<numberRows; j++) {
-            for(NSUInteger i=0; i<numberCols; i++) {
-                CGRect layerFrame = [self frameForCellWithRow:j col:i];
-                NSString *content = [NSString stringWithFormat:@"(%d,%d) %@", i, j, self.data[j][i]];
-                id cell = [self.reuseCache dequeueObject];
-                [self addCell:cell withFrame:layerFrame content:content];
-            }
-        }
+        self.visibleRowIndices = [self currentlyVisibleRows];
+        self.visibleColIndices = [self currentlyVisibleCols];
+        [self.visibleRowIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [self addRowWithIndex:idx];
+        }];
     }
+}
+
+#pragma mark - Reuse methods
+- (void)addRowWithIndex:(NSUInteger)row
+{
+    [self.visibleColIndices enumerateIndexesUsingBlock:^(NSUInteger col, BOOL *stop) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row column:col];
+        [self addCellAtIndexPath:indexPath];
+    }];
+}
+
+- (void)removeRowWithIndex:(NSUInteger)row
+{
+    [self.visibleColIndices enumerateIndexesUsingBlock:^(NSUInteger col, BOOL *stop) {
+        NSIndexPath *iPath = [NSIndexPath indexPathForRow:row column:col];
+        [self removeCellAtIndexPath:iPath];
+    }];
+}
+
+- (void)addColumnWithIndex:(NSUInteger)col
+{
+    [self.visibleRowIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx column:col];
+        [self addCellAtIndexPath:indexPath];
+    }];
+}
+
+- (void)removeColumnWithIndex:(NSUInteger)col
+{
+    [self.visibleRowIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx column:col];
+        [self removeCellAtIndexPath:indexPath];
+    }];
+}
+
+- (void)addCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect cellFrame = [self frameForCellWithRow:indexPath.row col:indexPath.column];
+    NSString *content = [NSString stringWithFormat:@"(%d,%d) %@", indexPath.row, indexPath.column, self.data[indexPath.row][indexPath.column]];
+    id cell = [self.reuseCache dequeueObject];
+    [self addCell:cell withFrame:cellFrame content:content];
+    [self.visibleCells setObject:cell forKey:indexPath];
+}
+
+- (void)removeCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    id cell = self.visibleCells[indexPath];
+    [self removeCell:cell];
+    [self.visibleCells removeObjectForKey:indexPath];
 }
 
 #pragma mark - Abstract methods
@@ -136,27 +187,38 @@
 #pragma mark - UISCrollViewDelegate methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //NSLog(@"%@", NSStringFromCGRect(scrollView.bounds));
-    
     // Get the new cells
     NSIndexSet *currentRows = [self currentlyVisibleRows];
     NSIndexSet *currentCols = [self currentlyVisibleCols];
     
     // Which are new?
-    //NSLog(@"New Rows: %@", [currentRows complementSet:self.visibleRowIndices]);
+    NSIndexSet *newRows = [currentRows complementSet:self.visibleRowIndices];
+    if([newRows count] > 0) {
+        [newRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [self addRowWithIndex:idx];
+        }];
+    }
     NSIndexSet *newCols = [currentCols complementSet:self.visibleColIndices];
     if([newCols count] > 0) {
-        NSLog(@"New Cols: %@", newCols);
+        [newCols enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [self addColumnWithIndex:idx];
+        }];
     }
     
     // And which have disappeared?
-    //NSLog(@"Lost Rows: %@", [self.visibleRowIndices complementSet:currentCols]);
+    NSIndexSet *lostRows = [self.visibleRowIndices complementSet:currentRows];
+    if([lostRows count] > 0) {
+        [lostRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [self removeRowWithIndex:idx];
+        }];
+    }
     NSIndexSet *lostCols = [self.visibleColIndices complementSet:currentCols];
     if([lostCols count] > 0) {
-        NSLog(@"Lost Cols: %@", lostCols);
+        [lostCols enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [self removeColumnWithIndex:idx];
+        }];
     }
-    
-    
+
     self.visibleColIndices = currentCols;
     self.visibleRowIndices = currentRows;
 }
