@@ -14,7 +14,7 @@
 		22AD0AA118E82A510003E9DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AA018E82A510003E9DF /* main.m */; };
 		22AD0AA518E82A510003E9DF /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AA418E82A510003E9DF /* SCAppDelegate.m */; };
 		22AD0AA818E82A510003E9DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22AD0AA618E82A510003E9DF /* Main.storyboard */; };
-		22AD0AAB18E82A510003E9DF /* SCFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AAA18E82A510003E9DF /* SCFirstViewController.m */; };
+		22AD0AAB18E82A510003E9DF /* SCViewGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AAA18E82A510003E9DF /* SCViewGridViewController.m */; };
 		22AD0AAE18E82A510003E9DF /* SCSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AAD18E82A510003E9DF /* SCSecondViewController.m */; };
 		22AD0AB018E82A510003E9DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD0AAF18E82A510003E9DF /* Images.xcassets */; };
 		22AD0AB718E82A510003E9DF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD0AB618E82A510003E9DF /* XCTest.framework */; };
@@ -22,6 +22,8 @@
 		22AD0AB918E82A510003E9DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD0A9818E82A510003E9DF /* UIKit.framework */; };
 		22AD0AC118E82A510003E9DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22AD0ABF18E82A510003E9DF /* InfoPlist.strings */; };
 		22AD0AC318E82A510003E9DF /* LayerGridTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AC218E82A510003E9DF /* LayerGridTests.m */; };
+		22AD0ACF18E835D60003E9DF /* SCViewGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0ACE18E835D60003E9DF /* SCViewGrid.m */; };
+		22AD0AD318E837BE0003E9DF /* SCDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AD218E837BE0003E9DF /* SCDataFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +48,8 @@
 		22AD0AA318E82A510003E9DF /* SCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
 		22AD0AA418E82A510003E9DF /* SCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
 		22AD0AA718E82A510003E9DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		22AD0AA918E82A510003E9DF /* SCFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFirstViewController.h; sourceTree = "<group>"; };
-		22AD0AAA18E82A510003E9DF /* SCFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFirstViewController.m; sourceTree = "<group>"; };
+		22AD0AA918E82A510003E9DF /* SCViewGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCViewGridViewController.h; sourceTree = "<group>"; };
+		22AD0AAA18E82A510003E9DF /* SCViewGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCViewGridViewController.m; sourceTree = "<group>"; };
 		22AD0AAC18E82A510003E9DF /* SCSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCSecondViewController.h; sourceTree = "<group>"; };
 		22AD0AAD18E82A510003E9DF /* SCSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCSecondViewController.m; sourceTree = "<group>"; };
 		22AD0AAF18E82A510003E9DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -56,6 +58,10 @@
 		22AD0ABE18E82A510003E9DF /* LayerGridTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LayerGridTests-Info.plist"; sourceTree = "<group>"; };
 		22AD0AC018E82A510003E9DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		22AD0AC218E82A510003E9DF /* LayerGridTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayerGridTests.m; sourceTree = "<group>"; };
+		22AD0ACD18E835D60003E9DF /* SCViewGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewGrid.h; sourceTree = "<group>"; };
+		22AD0ACE18E835D60003E9DF /* SCViewGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewGrid.m; sourceTree = "<group>"; };
+		22AD0AD118E837BE0003E9DF /* SCDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDataFactory.h; sourceTree = "<group>"; };
+		22AD0AD218E837BE0003E9DF /* SCDataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDataFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,11 +124,13 @@
 		22AD0A9A18E82A510003E9DF /* LayerGrid */ = {
 			isa = PBXGroup;
 			children = (
+				22AD0AD018E837320003E9DF /* Utils */,
+				22AD0ACC18E82E570003E9DF /* Grids */,
 				22AD0AA318E82A510003E9DF /* SCAppDelegate.h */,
 				22AD0AA418E82A510003E9DF /* SCAppDelegate.m */,
 				22AD0AA618E82A510003E9DF /* Main.storyboard */,
-				22AD0AA918E82A510003E9DF /* SCFirstViewController.h */,
-				22AD0AAA18E82A510003E9DF /* SCFirstViewController.m */,
+				22AD0AA918E82A510003E9DF /* SCViewGridViewController.h */,
+				22AD0AAA18E82A510003E9DF /* SCViewGridViewController.m */,
 				22AD0AAC18E82A510003E9DF /* SCSecondViewController.h */,
 				22AD0AAD18E82A510003E9DF /* SCSecondViewController.m */,
 				22AD0AAF18E82A510003E9DF /* Images.xcassets */,
@@ -158,6 +166,24 @@
 				22AD0ABF18E82A510003E9DF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22AD0ACC18E82E570003E9DF /* Grids */ = {
+			isa = PBXGroup;
+			children = (
+				22AD0ACD18E835D60003E9DF /* SCViewGrid.h */,
+				22AD0ACE18E835D60003E9DF /* SCViewGrid.m */,
+			);
+			name = Grids;
+			sourceTree = "<group>";
+		};
+		22AD0AD018E837320003E9DF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				22AD0AD118E837BE0003E9DF /* SCDataFactory.h */,
+				22AD0AD218E837BE0003E9DF /* SCDataFactory.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AD0AAE18E82A510003E9DF /* SCSecondViewController.m in Sources */,
-				22AD0AAB18E82A510003E9DF /* SCFirstViewController.m in Sources */,
+				22AD0AAB18E82A510003E9DF /* SCViewGridViewController.m in Sources */,
+				22AD0ACF18E835D60003E9DF /* SCViewGrid.m in Sources */,
 				22AD0AA518E82A510003E9DF /* SCAppDelegate.m in Sources */,
+				22AD0AD318E837BE0003E9DF /* SCDataFactory.m in Sources */,
 				22AD0AA118E82A510003E9DF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
