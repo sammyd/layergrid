@@ -30,6 +30,11 @@
     [self.scrollView.layer addSublayer:tlCell];
 }
 
+- (void)removeCell:(id)cell
+{
+    [cell removeFromSuperlayer];
+}
+
 - (id)createNewCell
 {
     CATextLayer *cell = [CATextLayer layer];

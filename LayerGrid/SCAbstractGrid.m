@@ -94,6 +94,14 @@
     @throw exception;
 }
 
+- (void)removeCell:(id)cell __attribute__((__noreturn__))
+{
+    NSException *exception = [NSException exceptionWithName:@"NotImplemented"
+                                                     reason:@"Override this in a subclass"
+                                                   userInfo:nil];
+    @throw exception;
+}
+
 - (id)createNewCell __attribute__((__noreturn__))
 {
     NSException *exception = [NSException exceptionWithName:@"NotImplemented"

@@ -28,6 +28,11 @@
     [self.scrollView addSubview:lCell];
 }
 
+- (void)removeCell:(id)cell
+{
+    [cell removeFromSuperview];
+}
+
 - (id)createNewCell
 {
     return [UILabel new];

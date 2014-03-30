@@ -15,8 +15,10 @@
 
 - (void)resetScrollView;
 - (void)addCell:(id)cell withFrame:(CGRect)frame content:(NSString *)content;
+- (void)removeCell:(id)cell;
 
 // Used by the reuse cache
 - (id)createNewCell;
+
 
 @end
