@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 ShinobiControls. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface SCFirstViewController : UIViewController
 
