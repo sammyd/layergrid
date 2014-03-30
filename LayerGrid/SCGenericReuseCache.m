@@ -42,7 +42,9 @@
 
 - (void)returnToCache:(id)object
 {
-    [self.cache addObject:object];
+    if(object) {
+        [self.cache addObject:object];
+    }
 }
 
 

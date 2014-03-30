@@ -124,8 +124,11 @@
 - (void)removeCellAtIndexPath:(NSIndexPath *)indexPath
 {
     id cell = self.visibleCells[indexPath];
-    [self removeCell:cell];
-    [self.visibleCells removeObjectForKey:indexPath];
+    if(cell) {
+        [self removeCell:cell];
+        [self.reuseCache returnToCache:cell];
+        [self.visibleCells removeObjectForKey:indexPath];
+    }
 }
 
 #pragma mark - Abstract methods
@@ -165,7 +168,7 @@
 - (NSIndexSet *)currentlyVisibleRows
 {
     NSUInteger minCell = MAX(floor(CGRectGetMinY(self.scrollView.bounds) / self.rowHeight), 0);
-    NSUInteger maxCell = ceil(CGRectGetMaxY(self.scrollView.bounds) / self.rowHeight);
+    NSUInteger maxCell = MIN(ceil(CGRectGetMaxY(self.scrollView.bounds) / self.rowHeight), [self.data count]);
     NSUInteger noCells = maxCell - minCell;
     return [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(minCell, noCells)];
 }
@@ -173,7 +176,7 @@
 - (NSIndexSet *)currentlyVisibleCols
 {
     NSUInteger minCell = MAX(floor(CGRectGetMinX(self.scrollView.bounds) / self.columnWidth), 0);
-    NSUInteger maxCell = ceil(CGRectGetMaxX(self.scrollView.bounds) / self.columnWidth);
+    NSUInteger maxCell = MIN(ceil(CGRectGetMaxX(self.scrollView.bounds) / self.columnWidth), [self.data[0] count]);
     NSUInteger noCells = maxCell - minCell;
     return [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(minCell, noCells)];
 }
@@ -193,26 +196,16 @@
     
     // Which are new?
     NSIndexSet *newRows = [currentRows complementSet:self.visibleRowIndices];
-    if([newRows count] > 0) {
-        [newRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-            [self addRowWithIndex:idx];
-        }];
-    }
     NSIndexSet *newCols = [currentCols complementSet:self.visibleColIndices];
-    if([newCols count] > 0) {
-        [newCols enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-            [self addColumnWithIndex:idx];
-        }];
-    }
-    
     // And which have disappeared?
     NSIndexSet *lostRows = [self.visibleRowIndices complementSet:currentRows];
+    NSIndexSet *lostCols = [self.visibleColIndices complementSet:currentCols];
+    
     if([lostRows count] > 0) {
         [lostRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
             [self removeRowWithIndex:idx];
         }];
     }
-    NSIndexSet *lostCols = [self.visibleColIndices complementSet:currentCols];
     if([lostCols count] > 0) {
         [lostCols enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
             [self removeColumnWithIndex:idx];
@@ -221,6 +214,17 @@
 
     self.visibleColIndices = currentCols;
     self.visibleRowIndices = currentRows;
+    
+    if([newRows count] > 0) {
+        [newRows enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [self addRowWithIndex:idx];
+        }];
+    }
+    if([newCols count] > 0) {
+        [newCols enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [self addColumnWithIndex:idx];
+        }];
+    }
 }
 
 

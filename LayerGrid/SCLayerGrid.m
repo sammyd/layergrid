@@ -23,9 +23,12 @@
 - (void)addCell:(id)cell withFrame:(CGRect)frame content:(NSString *)content
 {
     CATextLayer *tlCell = (CATextLayer *)cell;
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     tlCell.bounds = CGRectMake(0, 0, self.columnWidth, self.rowHeight);
     tlCell.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
     tlCell.string = content;
+    [CATransaction commit];
 
     [self.scrollView.layer addSublayer:tlCell];
 }
