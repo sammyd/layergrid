@@ -27,6 +27,7 @@
 		22AD0AD618E848F00003E9DF /* SCLayerGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AD518E848F00003E9DF /* SCLayerGrid.m */; };
 		22AD0ADA18E865E00003E9DF /* SCGenericReuseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AD918E865E00003E9DF /* SCGenericReuseCache.m */; };
 		22AD0ADD18E8681D0003E9DF /* SCAbstractGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0ADC18E8681D0003E9DF /* SCAbstractGrid.m */; };
+		22AD0AE118E86DEE0003E9DF /* NSIndexSet+SetOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AE018E86DEE0003E9DF /* NSIndexSet+SetOperations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		22AD0ADB18E8681D0003E9DF /* SCAbstractGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAbstractGrid.h; sourceTree = "<group>"; };
 		22AD0ADC18E8681D0003E9DF /* SCAbstractGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAbstractGrid.m; sourceTree = "<group>"; };
 		22AD0ADE18E868350003E9DF /* SCAbstractGrid_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAbstractGrid_Private.h; sourceTree = "<group>"; };
+		22AD0ADF18E86DEE0003E9DF /* NSIndexSet+SetOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+SetOperations.h"; sourceTree = "<group>"; };
+		22AD0AE018E86DEE0003E9DF /* NSIndexSet+SetOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+SetOperations.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +201,8 @@
 			children = (
 				22AD0AD118E837BE0003E9DF /* SCDataFactory.h */,
 				22AD0AD218E837BE0003E9DF /* SCDataFactory.m */,
+				22AD0ADF18E86DEE0003E9DF /* NSIndexSet+SetOperations.h */,
+				22AD0AE018E86DEE0003E9DF /* NSIndexSet+SetOperations.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AD0AAE18E82A510003E9DF /* SCLayerGridViewController.m in Sources */,
+				22AD0AE118E86DEE0003E9DF /* NSIndexSet+SetOperations.m in Sources */,
 				22AD0AAB18E82A510003E9DF /* SCViewGridViewController.m in Sources */,
 				22AD0ACF18E835D60003E9DF /* SCViewGrid.m in Sources */,
 				22AD0ADD18E8681D0003E9DF /* SCAbstractGrid.m in Sources */,

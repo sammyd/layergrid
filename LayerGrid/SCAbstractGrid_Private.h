@@ -12,4 +12,8 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
+
+- (void)resetScrollView;
+- (void)addCellWithFrame:(CGRect)frame content:(NSString *)content;
+
 @end
