@@ -62,6 +62,7 @@
                 cell.string = self.data[j][i];
                 cell.foregroundColor = [UIColor blackColor].CGColor;
                 cell.fontSize = 13;
+                cell.contentsScale = [UIScreen mainScreen].scale;
                 
                 
                 [self.scrollView.layer addSublayer:cell];
