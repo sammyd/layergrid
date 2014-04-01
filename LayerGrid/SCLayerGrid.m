@@ -35,6 +35,7 @@
 
 - (void)removeCell:(id)cell
 {
+    [cell removeAllAnimations];
     [cell removeFromSuperlayer];
 }
 
