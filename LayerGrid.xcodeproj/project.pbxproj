@@ -509,6 +509,7 @@
 				WARNING_CFLAGS = (
 					"-Weverything",
 					"-Wno-objc-missing-property-synthesis",
+					"-Wno-gnu",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -529,6 +530,7 @@
 				WARNING_CFLAGS = (
 					"-Weverything",
 					"-Wno-objc-missing-property-synthesis",
+					"-Wno-gnu",
 				);
 				WRAPPER_EXTENSION = app;
 			};

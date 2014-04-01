@@ -19,7 +19,7 @@
     for (NSUInteger j = 0; j < rows; j++) {
         NSMutableArray *currentCol = [NSMutableArray array];
         for(NSUInteger i=0; i < cols; i++) {
-            [currentCol addObject:wordList[arc4random_uniform([wordList count])]];
+            [currentCol addObject:wordList[arc4random_uniform((u_int32_t)[wordList count])]];
         }
         [rowArray addObject:[currentCol copy]];
     }

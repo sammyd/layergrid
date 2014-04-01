@@ -115,7 +115,7 @@
 - (void)addCellAtIndexPath:(NSIndexPath *)indexPath
 {
     CGRect cellFrame = [self frameForCellWithRow:indexPath.row col:indexPath.column];
-    NSString *content = [NSString stringWithFormat:@"(%d,%d) %@", indexPath.row, indexPath.column, self.data[indexPath.row][indexPath.column]];
+    NSString *content = [NSString stringWithFormat:@"(%ld,%lu) %@", indexPath.row, indexPath.column, self.data[indexPath.row][indexPath.column]];
     id cell = [self.reuseCache dequeueObject];
     [self addCell:cell withFrame:cellFrame content:content];
     [self.visibleCells setObject:cell forKey:indexPath];
