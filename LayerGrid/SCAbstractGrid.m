@@ -114,21 +114,39 @@
 
 - (void)addCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGRect cellFrame = [self frameForCellWithRow:indexPath.row col:indexPath.column];
-    NSString *content = [NSString stringWithFormat:@"(%ld,%lu) %@", indexPath.row, indexPath.column, self.data[indexPath.row][indexPath.column]];
-    id cell = [self.reuseCache dequeueObject];
-    [self addCell:cell withFrame:cellFrame content:content];
-    [self.visibleCells setObject:cell forKey:indexPath];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Check that we are still supposed to be viewing this cell?
+        if([self shouldDisplayCellAtIndexPath:indexPath]) {
+            // TODO: Need to guard against adding this twice
+            CGRect cellFrame = [self frameForCellWithRow:indexPath.row col:indexPath.column];
+            NSString *content = [NSString stringWithFormat:@"(%ld,%lu) %@", indexPath.row, indexPath.column, self.data[indexPath.row][indexPath.column]];
+            id cell = [self.reuseCache dequeueObject];
+            [self addCell:cell withFrame:cellFrame content:content];
+            [self.visibleCells setObject:cell forKey:indexPath];
+        }
+    });
 }
 
 - (void)removeCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    id cell = self.visibleCells[indexPath];
-    if(cell) {
-        [self removeCell:cell];
-        [self.reuseCache returnToCache:cell];
-        [self.visibleCells removeObjectForKey:indexPath];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Check that we should still be removing the cell
+        if(![self shouldDisplayCellAtIndexPath:indexPath]) {
+            // TODO: Need to guard against double removal
+            id cell = self.visibleCells[indexPath];
+            if(cell) {
+                [self removeCell:cell];
+                [self.reuseCache returnToCache:cell];
+                [self.visibleCells removeObjectForKey:indexPath];
+            }
+        }
+    });
+}
+
+- (BOOL)shouldDisplayCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.visibleColIndices containsIndex:indexPath.column]
+    && [self.visibleRowIndices containsIndex:indexPath.row];
 }
 
 #pragma mark - Abstract methods
