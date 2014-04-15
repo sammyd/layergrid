@@ -7,11 +7,13 @@
 //
 
 #import "SCFrameRateOverlayView.h"
+#import "SCMovingAverageCalculator.h"
 
 @interface SCFrameRateOverlayView ()
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
-@property (nonatomic)
+@property (nonatomic, assign) NSTimeInterval timeOfPreviousFrame;
+@property (nonatomic, strong) SCMovingAverageCalculator *maCalc;
 
 @end
 
@@ -24,6 +26,7 @@
         // Initialization code
         [self createLabel];
         self.userInteractionEnabled = NO;
+        self.maCalc = [SCMovingAverageCalculator calculatorWithLength:10];
         
         [self start];
     }
@@ -46,9 +49,12 @@
 
 - (void)timerTick:(CADisplayLink *)dl
 {
-    NSTimeInterval timeSinceLastFrame = CACurrentMediaTime() - self.displayLink.timestamp;
+    NSTimeInterval frameTime = CACurrentMediaTime();
+    NSTimeInterval timeSinceLastFrame = frameTime - self.timeOfPreviousFrame;
     CGFloat fps = 1 / timeSinceLastFrame;
-    self.displayLabel.text = [NSString stringWithFormat:@"%0.2f fps", fps];
+    NSNumber *maFPS = [self.maCalc addValue:@(fps)];
+    self.displayLabel.text = [NSString stringWithFormat:@"%0.0f fps", [maFPS floatValue]];
+    self.timeOfPreviousFrame = frameTime;
 }
 
 - (void)removeFromSuperview

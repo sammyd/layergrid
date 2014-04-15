@@ -30,6 +30,7 @@
 		22AD0AE118E86DEE0003E9DF /* NSIndexSet+SetOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AE018E86DEE0003E9DF /* NSIndexSet+SetOperations.m */; };
 		22AD0AE418E87EEC0003E9DF /* NSIndexPath+Columns.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AE318E87EEC0003E9DF /* NSIndexPath+Columns.m */; };
 		22AD0AEC18EB77010003E9DF /* SCFrameRateOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD0AEB18EB77010003E9DF /* SCFrameRateOverlayView.m */; };
+		F4BF220718FD7807002F1C1D /* SCMovingAverageCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BF220618FD7807002F1C1D /* SCMovingAverageCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		22AD0AE318E87EEC0003E9DF /* NSIndexPath+Columns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+Columns.m"; sourceTree = "<group>"; };
 		22AD0AEA18EB77010003E9DF /* SCFrameRateOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFrameRateOverlayView.h; sourceTree = "<group>"; };
 		22AD0AEB18EB77010003E9DF /* SCFrameRateOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFrameRateOverlayView.m; sourceTree = "<group>"; };
+		F4BF220518FD7807002F1C1D /* SCMovingAverageCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCMovingAverageCalculator.h; sourceTree = "<group>"; };
+		F4BF220618FD7807002F1C1D /* SCMovingAverageCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMovingAverageCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 				22AD0AE018E86DEE0003E9DF /* NSIndexSet+SetOperations.m */,
 				22AD0AE218E87EEC0003E9DF /* NSIndexPath+Columns.h */,
 				22AD0AE318E87EEC0003E9DF /* NSIndexPath+Columns.m */,
+				F4BF220518FD7807002F1C1D /* SCMovingAverageCalculator.h */,
+				F4BF220618FD7807002F1C1D /* SCMovingAverageCalculator.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				22AD0AA518E82A510003E9DF /* SCAppDelegate.m in Sources */,
 				22AD0AD318E837BE0003E9DF /* SCDataFactory.m in Sources */,
 				22AD0AA118E82A510003E9DF /* main.m in Sources */,
+				F4BF220718FD7807002F1C1D /* SCMovingAverageCalculator.m in Sources */,
 				22AD0AD618E848F00003E9DF /* SCLayerGrid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
