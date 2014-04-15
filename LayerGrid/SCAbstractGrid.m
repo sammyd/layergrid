@@ -11,6 +11,7 @@
 #import "NSIndexSet+SetOperations.h"
 #import "SCGenericReuseCache.h"
 #import "NSIndexPath+Columns.h"
+#import "SCFrameRateOverlayView.h"
 
 @interface SCAbstractGrid () <UIScrollViewDelegate>
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) NSIndexSet *visibleColIndices;
 @property (nonatomic, strong) SCGenericReuseCache *reuseCache;
 @property (nonatomic, strong) NSMutableDictionary *visibleCells;
+@property (nonatomic, strong) SCFrameRateOverlayView *frameRateView;
 
 @end
 
@@ -43,6 +45,9 @@
         
         // Visible cells
         self.visibleCells = [NSMutableDictionary dictionary];
+        
+        self.frameRateView = [[SCFrameRateOverlayView alloc] initWithFrame:self.bounds];
+        [self addSubview:self.frameRateView];
     }
     return self;
 }
